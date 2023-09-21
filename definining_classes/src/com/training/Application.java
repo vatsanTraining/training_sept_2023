@@ -20,6 +20,10 @@ public class Application {
 		System.out.println(geminor.isPrescriptionRequired());
 	
 		geminor.setRatePerUnit(560.00);
+		
+		Medicine sample = new Medicine(45.00, false);
+		
+		System.out.println(sample.getGenericName());
 	}
 
 }

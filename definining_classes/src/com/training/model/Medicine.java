@@ -11,6 +11,33 @@ package com.training.model;
 	public Medicine() {
 		super();
 	}
+	
+	
+	public Medicine(double ratePerUnit, boolean prescriptionRequired) {
+ 		this("sample",ratePerUnit,prescriptionRequired);
+		this.ratePerUnit = ratePerUnit;
+		this.prescriptionRequired = prescriptionRequired;
+	}
+
+
+	public Medicine(String genericName, double ratePerUnit, boolean prescriptionRequired) {
+     this("paraceptmol",genericName,ratePerUnit,prescriptionRequired);
+		this.genericName = genericName;
+		this.ratePerUnit = ratePerUnit;
+		this.prescriptionRequired = prescriptionRequired;
+	}
+
+
+	public Medicine(String medicineName, String genericName, double ratePerUnit, boolean prescriptionRequired) {
+      this(000,medicineName,genericName,ratePerUnit,prescriptionRequired);
+  
+		this.medicineName = medicineName;
+		this.genericName = genericName;
+		this.ratePerUnit = ratePerUnit;
+		this.prescriptionRequired = prescriptionRequired;
+	}
+
+
 	public Medicine(int id, String medicineName, String genericName, double ratePerUnit, boolean prescriptionRequired) {
 		super();
 		this.id = id;

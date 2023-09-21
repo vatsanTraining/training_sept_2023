@@ -7,6 +7,8 @@ public class Greeting {
 		return "Welcome to Java Programming";
 	}
 	
+	
+	
 	public void greet() {
 		
 		System.out.println("Hello world");
