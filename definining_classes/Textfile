@@ -1,0 +1,17 @@
+Medicine
+
+     private int id;
+	 private String medicineName;
+	 private String genericName;
+	 private double ratePerUnit;
+	 private boolean prescriptionRequired;
+	
+
+Patient
+
+Prescription
+
+TestRequest
+
+TestReport
+
