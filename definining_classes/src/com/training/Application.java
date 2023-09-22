@@ -1,6 +1,7 @@
 package com.training;
 
 import com.training.model.Medicine;
+import com.training.services.MedicineService;
 
 public class Application {
 
@@ -24,6 +25,16 @@ public class Application {
 		Medicine sample = new Medicine(45.00, false);
 		
 		System.out.println(sample.getGenericName());
+		
+		MedicineService service = new MedicineService();
+		
+		System.out.println("Before Call"+ dolo.getRatePerUnit());
+		
+		 dolo = service.process(dolo);
+		  
+		  System.out.println("After Call"+ dolo.getRatePerUnit());
+		  
+		  
 	}
 
 }
