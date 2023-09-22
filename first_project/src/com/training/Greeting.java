@@ -7,7 +7,13 @@ public class Greeting {
 		return "Welcome to Java Programming";
 	}
 	
+	// overloaded method name remains same but argument changes
 	
+	public String getMessage(String name) {
+		
+		return name + " Welcome to Java Programming";
+		
+	}
 	
 	public void greet() {
 		

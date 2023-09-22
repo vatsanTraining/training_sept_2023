@@ -17,5 +17,7 @@ public class Application {
 		String response =grtObj.getMessage();
 		
 		System.out.println(response);
+		
+		System.out.println(grtObj.getMessage(args[0]));
 	}
 }
