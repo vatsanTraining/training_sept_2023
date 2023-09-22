@@ -1,6 +1,8 @@
 package com.training.model;
 
- public class Medicine {
+import java.util.Objects;
+
+public class Medicine {
 
 	 private int id;
 	 private String medicineName;
@@ -77,6 +79,41 @@ package com.training.model;
 	public void setPrescriptionRequired(boolean prescriptionRequired) {
 		this.prescriptionRequired = prescriptionRequired;
 	}
+
+
+	
+
+	@Override
+	public String toString() {
+		return "Medicine [id=" + id + ", medicineName=" + medicineName + ", genericName=" + genericName
+				+ ", ratePerUnit=" + ratePerUnit + ", prescriptionRequired=" + prescriptionRequired + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(genericName, id, medicineName, prescriptionRequired, ratePerUnit);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medicine other = (Medicine) obj;
+		return Objects.equals(genericName, other.genericName) && id == other.id
+				&& Objects.equals(medicineName, other.medicineName)
+				&& prescriptionRequired == other.prescriptionRequired
+				&& Double.doubleToLongBits(ratePerUnit) == Double.doubleToLongBits(other.ratePerUnit);
+	}
+
+
+	
+
 	 
 	
 	 
