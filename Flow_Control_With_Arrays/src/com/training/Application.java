@@ -4,7 +4,6 @@ import com.training.model.Medicine;
 import com.training.model.PostGraduateStudent;
 import com.training.services.MedicineService;
 
-import java.util.*;
 
 public class Application {
 
@@ -69,7 +68,7 @@ public class Application {
 		 
 			Medicine dole= new Medicine(101, "Dolo 650", "Paraceptamol", 34.00, false);
 
-		   Medicine other= dole;
+		  // Medicine other= dole;
 		   
 			System.out.println("Is Equal :=>"+ dolo.equals(dole));
 			

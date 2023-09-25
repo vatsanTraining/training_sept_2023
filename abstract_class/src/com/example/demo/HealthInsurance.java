@@ -18,6 +18,30 @@ public class HealthInsurance extends Insurance {
 
 
 
+	public int getAge() {
+		return age;
+	}
+
+
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+
+
+	public boolean isPreExistingDisease() {
+		return preExistingDisease;
+	}
+
+
+
+	public void setPreExistingDisease(boolean preExistingDisease) {
+		this.preExistingDisease = preExistingDisease;
+	}
+
+
+
 	@Override
 	public double calculatePremium() {
 		

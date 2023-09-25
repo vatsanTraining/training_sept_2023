@@ -2,6 +2,7 @@ package com.training;
 
 import com.training.exceptions.RangeCheckException;
 import com.training.model.Medicine;
+import com.training.repos.MedicineReposUsingFile;
 import com.training.repos.MedicineRepository;
 import com.training.services.MedicineService;
 
@@ -9,7 +10,7 @@ public class Application {
 
 	public static void main(String[] args)  {
 
-		MedicineService service = new MedicineService(new MedicineRepository());
+		MedicineService service = new MedicineService(new MedicineReposUsingFile());
 		
 		try {
 			

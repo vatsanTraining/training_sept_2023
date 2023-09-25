@@ -99,8 +99,8 @@ public class Medicine {
 
 	@Override
 	public String toString() {
-		return "Medicine [id=" + id + ", medicineName=" + medicineName + ", genericName=" + genericName
-				+ ", ratePerUnit=" + ratePerUnit + ", prescriptionRequired=" + prescriptionRequired + "]";
+		return  id + "," +medicineName+ "," + genericName+ ","+ ratePerUnit + ","+ 
+	            prescriptionRequired;
 	}
 
 
