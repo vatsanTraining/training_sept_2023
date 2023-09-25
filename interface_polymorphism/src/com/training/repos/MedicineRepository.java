@@ -43,10 +43,12 @@ public class MedicineRepository implements CrudRepository {
 	public Medicine findById(int id) {
 
 		boolean found = false;
+		
 		Medicine foundMedicine = null;
+		
 		int i = 0;
 		
-		while(!found) {
+		while(!found && i<MAX_SIZE) {
 			
 			if(this.medicineList[i].getId()==id) {
 				foundMedicine=this.medicineList[i];
@@ -57,6 +59,5 @@ public class MedicineRepository implements CrudRepository {
 		}
 		return foundMedicine;
 	}
-
 	
 }

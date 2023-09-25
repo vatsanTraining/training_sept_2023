@@ -1,6 +1,9 @@
 package com.training.model;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
+
+import com.training.exceptions.RangeCheckException;
 
 public class Medicine {
 
@@ -15,14 +18,14 @@ public class Medicine {
 	}
 	
 	
-	public Medicine(double ratePerUnit, boolean prescriptionRequired) {
+	public Medicine(double ratePerUnit, boolean prescriptionRequired)  throws Exception{
  		this("sample",ratePerUnit,prescriptionRequired);
 		this.ratePerUnit = ratePerUnit;
 		this.prescriptionRequired = prescriptionRequired;
 	}
 
 
-	public Medicine(String genericName, double ratePerUnit, boolean prescriptionRequired) {
+	public Medicine(String genericName, double ratePerUnit, boolean prescriptionRequired)  throws Exception{
      this("paraceptmol",genericName,ratePerUnit,prescriptionRequired);
 		this.genericName = genericName;
 		this.ratePerUnit = ratePerUnit;
@@ -30,7 +33,7 @@ public class Medicine {
 	}
 
 
-	public Medicine(String medicineName, String genericName, double ratePerUnit, boolean prescriptionRequired) {
+	public Medicine(String medicineName, String genericName, double ratePerUnit, boolean prescriptionRequired) throws Exception {
       this(000,medicineName,genericName,ratePerUnit,prescriptionRequired);
   
 		this.medicineName = medicineName;
@@ -40,13 +43,19 @@ public class Medicine {
 	}
 
 
-	public Medicine(int id, String medicineName, String genericName, double ratePerUnit, boolean prescriptionRequired) {
+	public Medicine(int id, String medicineName, String genericName, double ratePerUnit, boolean prescriptionRequired) 
+	 throws RangeCheckException{
 		super();
 		this.id = id;
 		this.medicineName = medicineName;
 		this.genericName = genericName;
-		this.ratePerUnit = ratePerUnit;
 		this.prescriptionRequired = prescriptionRequired;
+		
+		if(ratePerUnit <=0) {
+			throw new RangeCheckException("ERR-101","Should be a positive Number",LocalDateTime.now());
+		} else {
+			this.ratePerUnit = ratePerUnit;
+		}
 	}
 	public int getId() {
 		return id;
@@ -69,8 +78,13 @@ public class Medicine {
 	public double getRatePerUnit() {
 		return ratePerUnit;
 	}
-	public void setRatePerUnit(double ratePerUnit) {
-		this.ratePerUnit = ratePerUnit;
+	public void setRatePerUnit(double ratePerUnit) throws RangeCheckException {
+		if(ratePerUnit<=0) {
+			throw new RangeCheckException("ERR-101","Should be Positive Number",LocalDateTime.now());
+				} else {
+					this.ratePerUnit = ratePerUnit;
+
+				}
 	}
 	public boolean isPrescriptionRequired() {
 		

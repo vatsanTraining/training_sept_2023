@@ -24,9 +24,17 @@ public class MedicineService {
 	}
 	
 	
-	public Medicine findById(int id) {
+	public Medicine findById(int id) throws Exception {
 		
-		return this.repo.findById(id);
+		Medicine obj = this.repo.findById(id);
+		
+		
+	if(obj==null) {
+		throw new Exception("Element With "+ id + " Not found");// must follow declare or handle rule
+		//throw new RuntimeException("Element With "+ id + "Not found"); // doesnot follow declare or handle rule
+	} else {
+		return obj;
+	}
 	}
 	
 }
