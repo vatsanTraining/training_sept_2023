@@ -1,0 +1,9 @@
+101,Crocin,Paraceptmol,45.0,false
+102,Gelusil,Antacid,35.0,false
+103,Bcausle,Bcomplex,25.0,false
+101,Crocin,Paraceptmol,45.0,false
+102,Gelusil,Antacid,35.0,false
+103,Bcausle,Bcomplex,25.0,false
+101,Crocin,Paraceptmol,45.0,false
+102,Gelusil,Antacid,35.0,false
+103,Bcausle,Bcomplex,25.0,false
