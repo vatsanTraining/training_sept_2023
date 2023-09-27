@@ -23,6 +23,8 @@ public class MedicineRdbmsImpl implements MedicineRepository{
 
 	private String REMOVE= "delete from medicine where id =?";
 	
+	private String UPDATE = "";
+	
 	
 
 	private Connection con;
@@ -33,26 +35,38 @@ public class MedicineRdbmsImpl implements MedicineRepository{
 		this.con = con;
 	}
 
+	// INSERT  => upsert => update and insert
 	@Override
-	public boolean add(Medicine obj) {
+	public boolean add(Medicine obj)  {
 		
 		int rowAdded =0;
 		
-		try(PreparedStatement pstmt = con.prepareStatement(INSERT)){
+		try {
+			if(this.findById(obj.getId())!=null) {
+				
+				try(PreparedStatement pstmt = con.prepareStatement(INSERT)){
+					
+					pstmt.setInt(1, obj.getId());
+					pstmt.setString(2, obj.getMedicineName());
+					pstmt.setString(3, obj.getGenericName());
+					pstmt.setDouble(4, obj.getRatePerUnit());
+					pstmt.setBoolean(5, obj.isPrescriptionRequired());
+					
+					rowAdded = pstmt.executeUpdate();
+				
+					
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+				return rowAdded==1?true:false;
+			}else {
 			
-			pstmt.setInt(1, obj.getId());
-			pstmt.setString(2, obj.getMedicineName());
-			pstmt.setString(3, obj.getGenericName());
-			pstmt.setDouble(4, obj.getRatePerUnit());
-			pstmt.setBoolean(5, obj.isPrescriptionRequired());
-			
-			rowAdded = pstmt.executeUpdate();
-		
-			
-		}catch(SQLException e) {
-			e.printStackTrace();
+				return false;
+			}
+		} catch (ElementNotFoundException e1) {
+			e1.printStackTrace();
 		}
-		return rowAdded==1?true:false;
+		return false;
 	}
 
 	@Override
@@ -101,7 +115,7 @@ public class MedicineRdbmsImpl implements MedicineRepository{
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				rowMapper(rs);
+				found =rowMapper(rs);
 			}
 			
 		} catch (Exception e) {
