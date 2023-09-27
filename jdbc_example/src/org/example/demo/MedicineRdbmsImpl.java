@@ -95,7 +95,10 @@ public class MedicineRdbmsImpl implements MedicineRepository{
 			
 			while(rs.next()) {
 				
-				rowMapper(rs);
+				Medicine obj =rowMapper(rs);
+				
+				list.add(obj);
+				
 			}
 			
 		}catch(SQLException | RangeCheckException e) {

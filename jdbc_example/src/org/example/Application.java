@@ -2,9 +2,12 @@ package org.example;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.example.demo.MedicineRdbmsImpl;
 import org.example.demo.ifaces.MedicineRepository;
+import org.example.demo.services.LatestMedicineService;
 
 import com.example.demo.utils.ConnectionUtils;
 import com.example.exceptions.ElementNotFoundException;
@@ -21,10 +24,10 @@ public class Application {
 		
 		MedicineRepository repo = new MedicineRdbmsImpl(con);
 		
-		MedicineService service = new MedicineService(repo);
+		MedicineService service = new LatestMedicineService(repo);
 		
 		 try {
-			System.out.println("Is Added :=>"+ service.add(new Medicine(205, "Cherrycalf", "caughsyrup", 67, true)));
+			System.out.println("Is Added :=>"+ service.add(new Medicine(210, "Savlon", "Sanitizer", 27, false)));
 		} catch (RangeCheckException e) {
 			e.printStackTrace();
 		}
@@ -48,6 +51,21 @@ public class Application {
 			e.printStackTrace();
 		}
 
+		LatestMedicineService serviceRef =(LatestMedicineService)service;
+		
+		System.out.println("Medicine Value Greater than 50");
+		serviceRef.getMedicineGrtThan(50).forEach(System.out::println);
+		
+		
+		   Map<String,Double> map=serviceRef.getMedicineNameAndPrice(50);
+		   
+		   Set<Map.Entry<String,Double>> keys = map.entrySet();
+		   
+		   for(Map.Entry<String, Double> eachItem : keys) {
+			   
+			   System.out.println(eachItem.getKey() + eachItem.getValue());
+		   }
+		    
 	}
 
 }
