@@ -1,10 +1,13 @@
 package com.example.demo;
 
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
 
+import com.example.demo.stereotype.Component;
 import com.example.demo.stereotype.Table;
 
 @Table(tableName = "creditcard")
+@Component(componentName = "card")
 public class CreditCard implements Serializable{
 
 	
@@ -20,6 +23,12 @@ public class CreditCard implements Serializable{
 	
 	public CreditCard() {
 		super();
+		
+		Annotation[] list = this.getClass().getAnnotations();
+		
+		for(Annotation eachAnnotation:list) {
+			System.out.println("annotations"+eachAnnotation.getClass().getName());
+		}
 	}
 	
 	public CreditCard(int cardNumber, String cardHolderName, double creditLimit, int cvv) {

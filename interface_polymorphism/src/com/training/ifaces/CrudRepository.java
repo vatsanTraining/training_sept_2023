@@ -10,3 +10,5 @@ public interface CrudRepository {
 	Medicine[] findAll();
 	Medicine findById(int id);
 }
+
+

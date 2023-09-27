@@ -6,7 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
+import java.util.HashMap;
+import com.example.demo.stereotype.Component;
 import com.example.demo.stereotype.Table;
 
 public class Application {
@@ -65,6 +66,31 @@ public class Application {
 		      
 		      System.out.println("Done");
 		           
+		      Component compRef = (Component)cls.getAnnotation(Component.class);
+		      
+		       String name = compRef.componentName();
+		       
+		      try {
+		    	  
+		    	  // creating a instance java class without using new 
+				CreditCard cardRef =(CreditCard) cls.newInstance();
+				
+				
+				HashMap<String, Object> beans = new HashMap<>();
+				
+				 beans.put(name, cardRef);
+				 
+				 System.out.println(beans.get("card"));
+				 
+				 
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		       
 		
 		
 	}
