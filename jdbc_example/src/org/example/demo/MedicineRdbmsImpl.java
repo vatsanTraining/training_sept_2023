@@ -23,7 +23,8 @@ public class MedicineRdbmsImpl implements MedicineRepository{
 
 	private String REMOVE= "delete from medicine where id =?";
 	
-	private String UPDATE = "";
+	private String UPDATE = "update medicine set medicine_name =? ,generic_name=?,"
+			+ "rate_per_unit=?,prescription_required=? where id =?";
 	
 	
 
@@ -35,14 +36,13 @@ public class MedicineRdbmsImpl implements MedicineRepository{
 		this.con = con;
 	}
 
-	// INSERT  => upsert => update and insert
 	@Override
 	public boolean add(Medicine obj)  {
 		
-		int rowAdded =0;
+		int rowAffected =0;
 		
 		try {
-			if(this.findById(obj.getId())!=null) {
+			if(this.findById(obj.getId())==null) {
 				
 				try(PreparedStatement pstmt = con.prepareStatement(INSERT)){
 					
@@ -52,21 +52,36 @@ public class MedicineRdbmsImpl implements MedicineRepository{
 					pstmt.setDouble(4, obj.getRatePerUnit());
 					pstmt.setBoolean(5, obj.isPrescriptionRequired());
 					
-					rowAdded = pstmt.executeUpdate();
+					rowAffected = pstmt.executeUpdate();
 				
 					
 				}catch(SQLException e) {
 					e.printStackTrace();
 				}
-				return rowAdded==1?true:false;
 			}else {
 			
-				return false;
+				
+				try(PreparedStatement pstmt = con.prepareStatement(UPDATE)){
+					
+					pstmt.setString(1, obj.getMedicineName());
+					pstmt.setString(2, obj.getGenericName());
+					pstmt.setDouble(3, obj.getRatePerUnit());
+					pstmt.setBoolean(4, obj.isPrescriptionRequired());
+					
+					pstmt.setInt(5, obj.getId());
+
+					rowAffected = pstmt.executeUpdate();
+				
+					
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		} catch (ElementNotFoundException e1) {
 			e1.printStackTrace();
 		}
-		return false;
+				return rowAffected==1?true:false;
+
 	}
 
 	@Override

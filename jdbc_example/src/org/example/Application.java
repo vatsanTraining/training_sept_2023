@@ -24,7 +24,7 @@ public class Application {
 		MedicineService service = new MedicineService(repo);
 		
 		 try {
-			System.out.println("Is Added :=>"+ service.add(new Medicine(204, "Cherrycalf", "caughsyrup", 67, true)));
+			System.out.println("Is Added :=>"+ service.add(new Medicine(205, "Cherrycalf", "caughsyrup", 67, true)));
 		} catch (RangeCheckException e) {
 			e.printStackTrace();
 		}
