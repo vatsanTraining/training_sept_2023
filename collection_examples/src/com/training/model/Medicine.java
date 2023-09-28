@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import com.training.exceptions.RangeCheckException;
 
+
 public class Medicine  implements Comparable<Medicine>{
 
 	 private int id;
