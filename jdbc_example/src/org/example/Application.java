@@ -65,7 +65,14 @@ public class Application {
 			   
 			   System.out.println(eachItem.getKey() + eachItem.getValue());
 		   }
-		    
+		    System.out.println("Result");
+		   serviceRef.getMedicineByCondition(e -> e.getId()>110).forEach(System.out::println);
+		   
+		   System.out.println("Top 2 By Name");
+		   
+		   serviceRef.topN(2).forEach(System.out::println);
+		   
+		   System.out.println("maximum price :=>"+ serviceRef.findItemwithMaxPrice());
 	}
 
 }
