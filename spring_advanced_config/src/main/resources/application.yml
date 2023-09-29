@@ -1,0 +1,28 @@
+spring:
+  config:
+    activate:
+      on-profile:
+      - "dev"
+      
+      
+server:
+  port: 5050
+  
+author:
+  name: "sri" 
+---
+spring:
+  config:
+    activate:
+      on-profile:
+      - "prod"
+     
+author:
+  name: "ram"       
+      
+server:
+  port: 6060
+        
+      
+ 
+      

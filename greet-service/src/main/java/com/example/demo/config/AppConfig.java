@@ -25,4 +25,5 @@ public class AppConfig {
 		
 		return new Student(1010, "Ramesh", 98);
 	}
+	
 }
