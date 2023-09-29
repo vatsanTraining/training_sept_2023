@@ -1,2 +1,12 @@
 author:
   name: sri
+  
+logging:
+  file:
+    name: c:\\demo\\abc.log
+    
+  level:
+    '[org.springframework.boot]': trace
+    
+    
+

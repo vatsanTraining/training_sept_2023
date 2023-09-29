@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-
+@Aspect
 public class TransformResponse {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
