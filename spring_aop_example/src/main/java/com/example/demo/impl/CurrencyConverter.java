@@ -26,9 +26,9 @@ public class CurrencyConverter implements Calculate<Double,Double> {
 	@Override
 	public Double calculate(Double inr) {
 		
+System.out.println("ARgument :=>"+inr);
 
-
-		return inr * 84;
+		return inr * 50;
 	}
 
 }
