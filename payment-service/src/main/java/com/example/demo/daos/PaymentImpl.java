@@ -18,7 +18,6 @@ public class PaymentImpl implements Payments {
 	private HashMap<String, List<Customer>> list;
 	
 	
-	
 
 	@Autowired
 	public PaymentImpl(List<Customer> custList, HashMap<String, List<Customer>> list) {
