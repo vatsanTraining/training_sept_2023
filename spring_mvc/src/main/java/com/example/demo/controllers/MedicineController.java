@@ -6,15 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entity.Medicine;
+import com.example.demo.services.MedicineService;
 
 @Controller
 public class MedicineController {
 
 	private Medicine medicine;
+	private MedicineService service;
 
-	public MedicineController(Medicine medicine) {
+	public MedicineController(Medicine medicine,MedicineService service) {
 		super();
 		this.medicine = medicine;
+		this.service = service;
 	}
 	
 	
@@ -31,6 +34,8 @@ public class MedicineController {
 	public String submit(Medicine  model) {
 		
 		System.out.println(model);
+		
+		this.service.add(model);
 		
 		return "success";
 		
