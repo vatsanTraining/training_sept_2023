@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +15,12 @@ public class MedicineController {
 	private Medicine medicine;
 	private MedicineService service;
 
+	@Autowired
 	public MedicineController(Medicine medicine,MedicineService service) {
 		super();
 		this.medicine = medicine;
 		this.service = service;
+		
 	}
 	
 	

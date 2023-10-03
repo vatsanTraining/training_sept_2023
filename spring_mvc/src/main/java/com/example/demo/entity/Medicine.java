@@ -14,7 +14,6 @@ import lombok.Data;
 
 @Data
 @Component
-
 @Entity
 @Table(name = "medicine_2023")
 public class Medicine {
