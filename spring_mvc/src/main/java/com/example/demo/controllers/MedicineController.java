@@ -33,16 +33,25 @@ public class MedicineController {
 		
 	}
 	
+	
+	@RequestMapping(path ="/showMedicine",method = RequestMethod.GET)
+	public String showMedicine(Model model) {
+		
+		model.addAttribute("data", this.service.findAll());
+		
+		return "showmedicines";
+		
+	}
 	@RequestMapping(path ="/addMedicine",method = RequestMethod.POST)
 	public String submit(Medicine  model) {
 		
-		System.out.println(model);
 		
 		this.service.add(model);
 		
 		return "success";
 		
 	}
+	
 	
 	
 }

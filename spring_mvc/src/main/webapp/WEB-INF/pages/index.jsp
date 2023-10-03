@@ -13,6 +13,7 @@
 
 
 <a href="addMedicine">Add Medicine</a>
+<a href="showMedicine">Show Medicine</a>
 
 
 </body>
