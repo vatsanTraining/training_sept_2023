@@ -36,6 +36,7 @@ public class ReviewService {
 	
 	public List<MedicineReview> findAll(){
 		
+		
 		return this.repo.findAll();
 		
 		}
@@ -58,5 +59,20 @@ public class ReviewService {
 		
 		return deleted;
 	}
+
 	
+	public List<MedicineReview> findByMedicineName(String medicineName){
+		
+		return this.repo.findByReviewedProduct(medicineName);
+	}
+	
+	public List<MedicineReview> findByRatingGrtThan(double rating){
+		
+		return this.repo.getDetailsRating(rating);
+	}
+	
+	public int updateRating(double newRating,int id) {
+		
+		return this.repo.updateRating(newRating, id);
+	}
 }
