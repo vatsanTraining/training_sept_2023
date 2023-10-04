@@ -85,7 +85,7 @@ public class ReviewController {
 		  
 		  int rowUpdated = this.service.updateRating(newRating, id);
 		  
-		  return ResponseEntity.ok(rowUpdated+" :>Updated");
+		  return ResponseEntity.ok(rowUpdated+" :Updated");
 	  }
 
 	  
