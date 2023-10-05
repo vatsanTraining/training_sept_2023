@@ -1,6 +1,5 @@
 package com.example.demo.config;
 
-import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,9 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class SecurityConfig {
@@ -30,7 +29,7 @@ public class SecurityConfig {
 	@Bean
 	public UserDetailsManager details () {
 		
-		UserDetails india = User.withUsername("india").password(encoder.encode("delhi")).authorities("ADMIN").build();
+		UserDetails india = User.withUsername("india").password(encoder.encode("delhi")).authorities("ROLE_ADMIN").build();
 		
 		UserDetails lanka = User.withUsername("lanka").password(encoder.encode("colombo")).authorities("GUEST").build();
 		
@@ -43,14 +42,18 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain  filterChain(HttpSecurity http) throws Exception{
 		
-		http.authorizeHttpRequests().requestMatchers("/second")
-		          .permitAll().and().authorizeHttpRequests()
-		                   .requestMatchers("/first").authenticated().and().httpBasic();
+	
+		http.authorizeHttpRequests().requestMatchers("/second","/actuator/**")
+        .permitAll().and().authorizeHttpRequests()
+                 .requestMatchers("/first").authenticated().and().httpBasic();
+
 		
 		
 		return http.build();
 	}
 	
+	
+
 //	@Bean
 //	public UserDetailsService jdbcUserDetailsService(DataSource dataSource) {
 //	 
